@@ -1,0 +1,257 @@
+:root {
+  --primary: #00e0ff;
+  --secondary: #23272a;
+  --secondary-glasses: #23272a3a;
+  --background: #10131a;
+  --card-bg: #181c23;
+  --text: #eaeaea;
+  --text-muted: #b0b8c1;
+  --border: #23272a;
+  --shadow: 0 8px 32px rgba(0,0,0,0.35);
+}
+
+body {
+  font-family: 'Lexend Deca', Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+  margin: 0;
+}
+
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 153, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 140, 255, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridmove 8s linear infinite;
+}
+
+@keyframes gridmove {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 40px 40px, 40px 40px;
+  }
+}
+
+body, .container, header, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+header {
+  width: 100%;
+  background: var(--secondary-glasses);
+  box-shadow: var(--shadow);
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo-wrapper {
+  display: inline-block;
+  position: relative;
+  height: 48px;
+}
+
+.logo {
+  height: 48px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px #00e0ff44);
+  display: block;
+}
+
+nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: var(--primary);
+}
+
+.center-content {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 2rem;
+  box-shadow: var(--shadow);
+  padding: 3rem 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  border: 1.5px solid var(--border);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+
+p {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 1.1rem;
+  padding: 0.9rem 2.2rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(0,224,255,0.08);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #181c23;
+}
+
+.btn-primary:hover {
+  background: #00b8d9;
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-secondary:hover {
+  background: #00e0ff22;
+  color: #fff;
+  border-color: #00b8d9;
+  transform: translateY(-2px) scale(1.03);
+}
+
+.bottom-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.bottom-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.bottom-links a:hover {
+  color: var(--primary);
+}
+
+footer {
+  background: var(--secondary-glasses);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 0 0 1rem 0;
+  font-size: 1rem;
+  border-top: 1px solid var(--border);
+  user-select: none;
+}
+
+footer .bottom-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+footer .bottom-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+footer .bottom-links a:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 2rem 1rem;
+  }
+  .header-flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  nav {
+    gap: 1rem;
+  }
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.fade.show {
+  opacity: 1;
+}
+
+.fade-title {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.fade-title.show {
+  opacity: 1;
+}
